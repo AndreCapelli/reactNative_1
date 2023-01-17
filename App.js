@@ -16,6 +16,9 @@ import GoalInput from "./components/GoalInput";
 export default function App() {
   const [courseGoal, setCourseGoal] = useState([]);
   const [modalIsVisible, setModalIsVisible] = useState(false);
+  const [updateGoal, setUpdateGoal] = useState(false);
+  const [updateTextGoal, setUpdateTextGoal] = useState("");
+  const [updateIDGoal, setUpdateIDGoal] = useState("");
 
   function startAddGoalHandler() {
     setModalIsVisible(true);
@@ -23,6 +26,10 @@ export default function App() {
 
   function endAddGoalHandler() {
     setModalIsVisible(false);
+    setUpdateGoal(false);
+
+    setUpdateTextGoal("");
+    setUpdateIDGoal("");
   }
 
   function addGoalHandler(enteredGoalText) {
@@ -66,8 +73,6 @@ export default function App() {
     );
   }
 
-  function updateGoalHandler(id) {}
-
   return (
     <>
       <StatusBar style="light" />
@@ -77,11 +82,13 @@ export default function App() {
           color="#5e0acc"
           onPress={startAddGoalHandler}
         />
+
         <GoalInput
           visible={modalIsVisible}
           onAddGoal={addGoalHandler}
           onCancel={endAddGoalHandler}
         />
+
         <View style={styles.goalsContainer}>
           <FlatList
             data={courseGoal}
@@ -90,8 +97,8 @@ export default function App() {
                 <GoalItem
                   text={itemData.item.text}
                   id={itemData.item.id}
-                  onDeleteItem={deleteGoalHandler}
-                  showInfo={onLongPressHandler}
+                  onPress={deleteGoalHandler}
+                  onLongPress={onLongPressHandler}
                 />
               );
             }}

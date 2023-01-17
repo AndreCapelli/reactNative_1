@@ -31,12 +31,14 @@ function GoalInput(props) {
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
         <Image style={styles.image} source={require("../assets/favicon.png")} />
+
         <TextInput
           style={styles.textInput}
           placeholder="Goal"
           onChangeText={goalInputHandler}
           value={enteredGoalText}
         />
+
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button title="Add Goal" onPress={addGoalHandler} color="#5e0acc" />

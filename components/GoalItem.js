@@ -5,8 +5,8 @@ function GoalItem(props) {
   return (
     <Pressable
       android_ripple={{ color: "#ddd" }}
-      onPress={props.onDeleteItem.bind(this, props.id)}
-      onLongPress={props.showInfo.bind(this, props.id)}>
+      onPress={props.onPress.bind(this, props.id)}
+      onLongPress={props.onLongPress.bind(this, props.id)}>
       <Text style={styles.goalItem}>{props.text}</Text>
     </Pressable>
   );
